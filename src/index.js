@@ -1,15 +1,13 @@
 import Mirador from 'mirador/dist/es/src/init'
-// import AnnotoriousPlugin from './AnnotoriousPlugin';
+import AnnotoriousPlugin from './AnnotoriousPlugin';
 
-/*
-const plugin = {
-    component: AnnotoriousPlugin,
-    target: 'OpenSeadragonViewer',
-    mode: 'wrap'
+const pluginConfig = {
+  component: AnnotoriousPlugin,
+  target: 'OpenSeadragonViewer',
+  mode: 'wrap'
 };
-*/
 
-Mirador.viewer({
+const miradorConfig = {
   id: 'mirador',
   windows: [{
     manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
@@ -25,6 +23,7 @@ Mirador.viewer({
   workspace: {
     type: 'not-mosaic-or-elastic',
   },
-}, [
-  // plugin
-]);
+};
+
+Mirador.viewer(miradorConfig, [ pluginConfig ]);
+
