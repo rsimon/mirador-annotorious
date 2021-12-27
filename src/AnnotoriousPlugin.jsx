@@ -1,15 +1,21 @@
-import { useEffect } from 'react';
-// import * as Annotorious from '@recogito/annotorious-openseadragon';
+import { Component } from 'react';
+import * as Annotorious from '@recogito/annotorious-openseadragon';
 
-const AnnotoriousPlugin = props => {
+export default class AnnotoriousPlugin extends Component {
 
-  useEffect(() => {
-    // Used to include props.viewer at some point...?
-    console.log('[AnnotoriousPlugin]', props);
-  });
+  constructor(props) {
+    super(props);
+  }
 
-  return props.children;
+  componentWillReceiveProps(next) {
+    // Used to include props.viewer!?
+    console.log('next props', next);
+    if (next.viewer)
+      Annotorious(next.viewer, {});
+  }
+
+  render() {
+    return this.props.children;
+  }
 
 }
-
-export default AnnotoriousPlugin;

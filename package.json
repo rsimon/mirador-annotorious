@@ -4,7 +4,8 @@
   "description": "An annotation plugin to the Mirador IIIF multi-image viewer based on Annotorious",
   "scripts": {
     "start": "parcel serve ./index.html",
-    "build": "parcel build ./index.html"
+    "build": "parcel build ./index.html",
+    "postinstall": "sed -i 's/fetch(/fetch.bind(window)(/g' ./node_modules/mirador/dist/es/src/state/sagas/iiif.js"
   },
   "repository": {
     "type": "git",
@@ -27,8 +28,8 @@
   },
   "dependencies": {
     "@recogito/annotorious-openseadragon": "^2.6.0",
-    "mirador": "^3.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "mirador": "^3.2.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   }
 }
