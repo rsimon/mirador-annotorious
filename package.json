@@ -1,0 +1,34 @@
+{
+  "name": "@recogito/mirador-annotorious",
+  "version": "0.1.0",
+  "description": "An annotation plugin to the Mirador IIIF multi-image viewer based on Annotorious",
+  "scripts": {
+    "start": "parcel serve ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recogito/mirador-annotorious.git"
+  },
+  "keywords": [
+    "Mirador",
+    "IIIF",
+    "Annotation",
+    "ImageAnnotation"
+  ],
+  "author": "Rainer Simon",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/recogito/mirador-annotorious/issues"
+  },
+  "homepage": "https://github.com/recogito/mirador-annotorious#readme",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "@recogito/annotorious-openseadragon": "^2.6.0",
+    "mirador": "^3.3.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}
