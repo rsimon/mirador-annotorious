@@ -2,6 +2,15 @@
   "name": "@recogito/mirador-annotorious",
   "version": "0.1.0",
   "description": "An annotation plugin to the Mirador IIIF multi-image viewer based on Annotorious",
+  "dependencies": {
+    "@recogito/annotorious-openseadragon": "^2.6.0",
+    "mirador": "^3.3.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  },
   "scripts": {
     "start": "parcel serve ./index.html",
     "build": "parcel build ./index.html",
@@ -18,18 +27,5 @@
     "ImageAnnotation"
   ],
   "author": "Rainer Simon",
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/recogito/mirador-annotorious/issues"
-  },
-  "homepage": "https://github.com/recogito/mirador-annotorious#readme",
-  "devDependencies": {
-    "parcel": "^2.0.1"
-  },
-  "dependencies": {
-    "@recogito/annotorious-openseadragon": "^2.6.0",
-    "mirador": "^3.2.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
-  }
+  "license": "BSD-3-Clause"
 }
