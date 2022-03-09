@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
-// import * as Annotorious from '@recogito/annotorious-openseadragon';
+import * as Annotorious from '@recogito/annotorious-openseadragon';
 
 export default props => {
 
   useEffect(() => {
-    console.log('effect', props.viewer)
+    if (props.viewer) {
+      const anno = Annotorious(props.viewer);
+    }
   }, [ props.viewer ]);
 
   return props.children;

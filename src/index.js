@@ -1,10 +1,12 @@
 import Mirador from 'mirador/dist/es/src/init'
 import AnnotoriousPlugin from './AnnotoriousPlugin';
 
+import '@recogito/annotorious-openseadragon/dist/annotorious.min.css';
+
 const myPlugin = {
     component: AnnotoriousPlugin,
     target: 'OpenSeadragonViewer',
-    mode: 'wrap'
+    mode: 'add'
 };
 
 const miradorCfg = {
