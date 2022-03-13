@@ -8,6 +8,7 @@ const myPlugin = {
   target: 'OpenSeadragonViewer',
   mode: 'add',
   mapStateToProps: (state, props) => { 
+    console.log(state, props);
     // TODO extract annotations?
     return {};
   }
@@ -16,8 +17,9 @@ const myPlugin = {
 const miradorCfg = {
   id: 'mirador',
   windows: [{
-    manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
-    canvasId: 'https://iiif.harvardartmuseums.org/manifests/object/299843/canvas/canvas-47174892',
+    // manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
+    // canvasId: 'https://iiif.harvardartmuseums.org/manifests/object/299843/canvas/canvas-47174892',
+    manifestId: 'https://dnoneill.github.io/annonatate/manifests/catalog/0002386/manifest.json',
     thumbnailNavigationPosition: 'far-bottom',
     allowClose: false,
   }],
