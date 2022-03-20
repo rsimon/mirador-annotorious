@@ -7,13 +7,13 @@ export default props => {
 
   useEffect(() => {
     if (props.viewer) {
+      console.log(props);
+
       const anno = Annotorious(props.viewer);
 
       const existing = annotations[props.label] ? 
-        [...annotations[props.label], ...props.annotations || [] ] :
-        props.annotations || [];
-
-      console.log('Annotations', existing);
+        [...annotations[props.label], ...props.annotations[props.windowId] || [] ] :
+        props.annotations[props.windowId] || [];
 
       anno.setAnnotations(existing);
 
@@ -41,7 +41,7 @@ export default props => {
 
       return (() => anno.destroy());
     }
-  }, [ props.viewer, props.label, props.annotations ]);
+  }, [ props.viewer, props.label ]);
 
   return props.children;
 

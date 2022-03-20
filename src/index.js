@@ -8,15 +8,24 @@ const myPlugin = {
   target: 'OpenSeadragonViewer',
   mode: 'add',
   mapStateToProps: (state, props) => { 
-    const { canvases } = props.canvasWorld;
+    const { windows } = state;
 
-    const canvasAnnotationPages = canvases.reduce((pages, canvas) => 
-      [...pages, canvas.canvasAnnotationPages ], []);
+    const annotations = {};
 
-    const annotations = canvasAnnotationPages.reduce((annotations, pages ) => {
-      const items = pages.reduce((all, page) => [...all, ...page.items ], []);
-      return [...annotations, ...items];
-    }, []);
+    for (const [ windowId, obj ] of Object.entries(windows)) {
+      // Canvas ID for this window
+      const { canvasId } = obj;
+
+      // All annotation datasets for this canvas
+      for (const [ source, obj ] of Object.entries(state.annotations[canvasId])) {
+        if (obj.json && obj.json?.type === 'AnnotationPage') {
+          if (!annotations[windowId])
+            annotations[windowId] = [];
+
+          annotations[windowId].push(...obj.json.items);
+        }
+      }
+    }
 
     return { annotations };
   }
@@ -27,7 +36,7 @@ const miradorCfg = {
   windows: [{
     // manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
     // canvasId: 'https://iiif.harvardartmuseums.org/manifests/object/299843/canvas/canvas-47174892',
-    manifestId: 'https://studio.archipelago.nyc/do/11aa2644-b4ec-11eb-81a8-b74746cb79fe/metadata/iiifmanifest3cws/Agnes%20Meyerhof%20Bookplate_manifest.jsonld',
+    manifestId: 'https://dnoneill.github.io/annonatate/manifests/catalog/0002386/manifest.json',
     thumbnailNavigationPosition: 'far-bottom',
     allowClose: false,
   }],
