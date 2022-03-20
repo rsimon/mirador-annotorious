@@ -8,9 +8,17 @@ const myPlugin = {
   target: 'OpenSeadragonViewer',
   mode: 'add',
   mapStateToProps: (state, props) => { 
-    console.log(state, props);
-    // TODO extract annotations?
-    return {};
+    const { canvases } = props.canvasWorld;
+
+    const canvasAnnotationPages = canvases.reduce((pages, canvas) => 
+      [...pages, canvas.canvasAnnotationPages ], []);
+
+    const annotations = canvasAnnotationPages.reduce((annotations, pages ) => {
+      const items = pages.reduce((all, page) => [...all, ...page.items ], []);
+      return [...annotations, ...items];
+    }, []);
+
+    return { annotations };
   }
 };
 
@@ -19,7 +27,7 @@ const miradorCfg = {
   windows: [{
     // manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
     // canvasId: 'https://iiif.harvardartmuseums.org/manifests/object/299843/canvas/canvas-47174892',
-    manifestId: 'https://dnoneill.github.io/annonatate/manifests/catalog/0002386/manifest.json',
+    manifestId: 'https://studio.archipelago.nyc/do/11aa2644-b4ec-11eb-81a8-b74746cb79fe/metadata/iiifmanifest3cws/Agnes%20Meyerhof%20Bookplate_manifest.jsonld',
     thumbnailNavigationPosition: 'far-bottom',
     allowClose: false,
   }],

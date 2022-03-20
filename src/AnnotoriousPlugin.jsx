@@ -9,7 +9,12 @@ export default props => {
     if (props.viewer) {
       const anno = Annotorious(props.viewer);
 
-      const existing = annotations[props.label] || [];
+      const existing = annotations[props.label] ? 
+        [...annotations[props.label], ...props.annotations || [] ] :
+        props.annotations || [];
+
+      console.log('Annotations', existing);
+
       anno.setAnnotations(existing);
 
       anno.on('createAnnotation', annotation => {
@@ -36,7 +41,7 @@ export default props => {
 
       return (() => anno.destroy());
     }
-  }, [ props.viewer, props.label ]);
+  }, [ props.viewer, props.label, props.annotations ]);
 
   return props.children;
 
